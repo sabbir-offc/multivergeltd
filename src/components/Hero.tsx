@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 
 const Hero = () => {
   const titleRef = useRef(null);
@@ -50,11 +51,13 @@ const Hero = () => {
 
       {/* Right Image */}
       <div ref={imageRef} className="w-full md:w-[45%]">
-        <img
-          src="https://deon.qodeinteractive.com/wp-content/uploads/2021/11/Home-10-rev-img.png" // Replace this with your actual image
-          alt="Mockup"
-          className="w-full object-contain drop-shadow-xl"
-        />
+      <Image
+  src="https://deon.qodeinteractive.com/wp-content/uploads/2021/11/Home-10-rev-img.png"
+  alt="Hero"
+  width={600}
+  height={400}
+  priority
+/>
       </div>
     </section>
   );

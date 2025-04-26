@@ -6,10 +6,13 @@ import GLOBE from 'vanta/src/vanta.globe'
 import { motion } from 'framer-motion'
 import { useTheme } from '@/context/ThemeProvider'
 import { ChevronUp } from 'lucide-react'
-
+type VantaEffectInstance = {
+    destroy: () => void;
+  };
+  
 export default function CTASection() {
   const ctaRef = useRef(null)
-  const [vantaEffect, setVantaEffect] = useState(null)
+  const [vantaEffect, setVantaEffect] = useState<VantaEffectInstance | null>(null);
   const { theme } = useTheme()
   const [showButton, setShowButton] = useState(false)
 
@@ -48,7 +51,7 @@ export default function CTASection() {
         window.removeEventListener('scroll', handleScroll)
       }
 
-  }, [theme])
+  }, [theme, vantaEffect])
 
   return (
     <section
