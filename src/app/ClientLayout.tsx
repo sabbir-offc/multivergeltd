@@ -10,6 +10,16 @@ import Script from 'next/script';
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      {/* Google Tag Manager (NoScript Fallback for noscript users) */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-WSM76TSK"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
+
       {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-QK3XN9X9GH"
