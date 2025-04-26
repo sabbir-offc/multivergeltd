@@ -1,11 +1,6 @@
-import CustomCursor from '@/components/CustomCursor';
 import './globals.css';
-import { ThemeProvider } from '@/context/ThemeProvider';
 import { Poppins } from 'next/font/google';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Toaster } from 'react-hot-toast';
-import Script from 'next/script';
+import ClientLayout from './ClientLayout';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -39,33 +34,20 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={poppins.className}>
-      <head>
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QK3XN9X9GH"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-QK3XN9X9GH', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
       <body className="bg-[var(--background)] text-[var(--foreground)] transition-colors duration-500">
-        <ThemeProvider>
-          <Navbar />
-          <Toaster position="top-center" />
+        <ClientLayout>
           {children}
-          <Footer />
-          <CustomCursor />
-        </ThemeProvider>
+        </ClientLayout>
       </body>
     </html>
   );
 }
+
+
+
+
+
+
+
+
+
