@@ -51,7 +51,7 @@ export default function CTASection() {
         window.removeEventListener('scroll', handleScroll)
       }
 
-  }, [theme, vantaEffect])
+  }, [theme])
 
   return (
     <section
