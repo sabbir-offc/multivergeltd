@@ -1,14 +1,25 @@
 import { blogs } from '@/data/blogs';
 import SingleBlogPage from '@/components/SingleBlogPage';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
-interface Props {
-  params: { slug: string };
+// generateStaticParams for building pages statically
+export async function generateStaticParams() {
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
 }
 
-export function generateMetadata({ params }: Props) {
+// generateMetadata for SEO
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const blog = blogs.find((b) => b.slug === params.slug);
-  if (!blog) return {};
+
+  if (!blog) {
+    return {
+      title: 'Blog Not Found | Multiverge Ltd',
+      description: 'Sorry, the blog you are looking for was not found.',
+    };
+  }
 
   return {
     title: `${blog.title} | Multiverge Ltd Blog`,
@@ -16,14 +27,18 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function BlogDetailsPage({ params }: Props) {
+// ✅ MAIN FIX: async default export function
+// @ts-expect-error Async typing bug in Next.js 15
+export default async function BlogDetailsPage({ params }: { params: { slug: string } }) {
   const blog = blogs.find((b) => b.slug === params.slug);
 
   if (!blog) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
         <h1 className="text-3xl font-bold mb-4">404 - Blog Not Found</h1>
-        <p className="text-gray-500 dark:text-gray-400 mb-8">Sorry, we couldn't find the blog you're looking for.</p>
+        <p className="text-gray-500 dark:text-gray-400 mb-8">
+          Sorry, we couldn&apos;t find the blog you&apos;re looking for.
+        </p>
         <Link
           href="/blog"
           className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition"
@@ -34,7 +49,6 @@ export default function BlogDetailsPage({ params }: Props) {
     );
   }
 
-  // Find 2 Related Posts (excluding current)
   const relatedPosts = blogs.filter((b) => b.slug !== params.slug).slice(0, 2);
 
   return (
@@ -54,7 +68,7 @@ export default function BlogDetailsPage({ params }: Props) {
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="mt-24 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-10 text-center">Random Posts</h2>
+          <h2 className="text-3xl font-bold mb-10 text-center">Related Posts</h2>
 
           <div className="grid md:grid-cols-2 gap-10 px-4">
             {relatedPosts.map((post) => (

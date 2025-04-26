@@ -66,7 +66,7 @@ export default function ContactContent() {
           ))}
         </h1>
         <p className="mt-6 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-          We'd love to hear from you. Let’s build something extraordinary together!
+          We&apos;d love to hear from you. Let’s build something extraordinary together!
         </p>
       </div>
 
