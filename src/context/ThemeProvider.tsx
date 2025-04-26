@@ -21,6 +21,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("light");
+  const [mounted, setMounted] = useState(false); // 👈 Added mounted state
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme;
@@ -28,6 +29,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       setTheme(storedTheme);
       document.documentElement.setAttribute("data-theme", storedTheme);
     }
+    setMounted(true); // 👈 Mark mounted after loading theme
   }, []);
 
   const toggleTheme = () => {
@@ -36,6 +38,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
   };
+
+  if (!mounted) return null; // 👈 Prevent hydration mismatch
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

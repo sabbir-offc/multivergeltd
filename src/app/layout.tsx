@@ -47,12 +47,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body>
         <ThemeProvider>
-          <CustomCursor/>
           <Navbar/>
           <Toaster position="top-center" />
 
             {children}
             <Footer/>
+          <CustomCursor/>
             </ThemeProvider>
       </body>
     </html>

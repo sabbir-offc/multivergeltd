@@ -76,20 +76,24 @@ const Navbar = () => {
             color: "var(--foreground)",
           }}
         >
-          {NAV_ITEMS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className={`${
-                pathname === href
-                  ? "text-purple-500 underline underline-offset-4"
-                  : "hover:text-purple-500"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+         {NAV_ITEMS.map(({ label, href }) => (
+  <Link
+    key={label}
+    href={href}
+    onClick={() => {
+      setTimeout(() => {
+        setMenuOpen(false);
+      }, 100); // 👈 Add small delay here
+    }}
+    className={`${
+      pathname === href
+        ? "text-purple-500 underline underline-offset-4"
+        : "hover:text-purple-500"
+    }`}
+  >
+    {label}
+  </Link>
+))}
         </nav>
       )}
     </header>
