@@ -36,6 +36,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={poppins.className}>
       <head>
+          {/* Normal Meta */}
+  <meta name="description" content="Boost your business growth with Multiverge Ltd. Specialized in affiliate marketing, tech consulting, and innovative digital solutions." />
+  <meta name="keywords" content="Affiliate Marketing, Digital Solutions, Tech Consulting, Business Growth, Multiverge Ltd" />
+  <meta name="author" content="Multiverge Ltd" />
+
+  {/* Open Graph / Facebook */}
+  <meta property="og:title" content="Multiverge Ltd | Grow More" />
+  <meta property="og:description" content="Empowering your digital growth journey with affiliate marketing, IT consulting, and web innovation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.multivergeltd.com/" />
+  <meta property="og:image" content="https://www.multivergeltd.com/og-image.png" />
+  <meta property="og:site_name" content="Multiverge Ltd" />
+
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Multiverge Ltd | Grow More" />
+  <meta name="twitter:description" content="Empowering your digital growth journey with affiliate marketing, IT consulting, and web innovation." />
+  <meta name="twitter:image" content="https://www.multivergeltd.com/og-image.png" />
+
         {/* Google Tag Manager (Head Script) */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`
