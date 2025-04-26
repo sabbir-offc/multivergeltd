@@ -34,6 +34,7 @@ const ServicesPreview = () => {
         backgroundColor: "var(--background)",
         color: "var(--foreground)",
       }}
+      
     >
       <div className="max-w-6xl mx-auto">
         {/* Heading */}

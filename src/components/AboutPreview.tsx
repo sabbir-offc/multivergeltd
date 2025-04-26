@@ -22,7 +22,7 @@ const features = [
 
 const AboutPreview = () => {
   return (
-    <section
+    <section id="about"
       className="w-full px-6 md:px-20 py-24"
       style={{
         backgroundColor: "var(--background)",
@@ -45,7 +45,7 @@ const AboutPreview = () => {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             viewport={{ once: true }}
           >
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">

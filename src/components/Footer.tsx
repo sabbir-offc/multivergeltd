@@ -61,6 +61,7 @@ import {
         <div className="text-center mt-12 text-xs text-gray-500 dark:text-gray-400">
           © 2025 Multiverge Ltd. All rights reserved.
         </div>
+        
       </footer>
     );
   };
