@@ -12,7 +12,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <>
       {/* Google Analytics */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+        src="https://www.googletagmanager.com/gtag/js?id=G-QK3XN9X9GH"
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -20,7 +20,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-XXXXXXXXXX', {
+          gtag('config', 'G-QK3XN9X9GH', {
             page_path: window.location.pathname,
           });
         `}
