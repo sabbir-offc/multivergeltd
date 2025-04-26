@@ -1,5 +1,3 @@
-'use client';
-
 import CustomCursor from '@/components/CustomCursor';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeProvider';
